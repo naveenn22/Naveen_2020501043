@@ -32,7 +32,92 @@
 # Hint: Then, you may wish to use diceToOrderedHand(a, b, c) at the end to convert the 3 dice back
 # into a sorted hand.
 # Hint: Also, remember to use % to get the one's digit, and use //= to get rid of the one's digit.
-
+def handToDice(hand):
+	numOfDigits = 0
+	s = set()
+	repeated = 0
+	unrepeated = 0
+	flag = False
+	l=[]
+	# print(hand)
+	while(hand>0):
+		# print(100)
+		temp = hand % 10
+		if(temp in s):
+			repeated = temp
+			flag = True
+		else:
+			unrepeated = temp
+		s.add(temp)
+		hand = hand // 10
+		numOfDigits+=1
+	# print(flag)
+	# print(s)
+	if(flag):
+		l.append(10)
+		l.append(repeated)
+		l.append(unrepeated)
+		return l
+	else:
+		for i in s:
+			l.append(i)
+		
+		return l
 def playstep2(hand, dice):
+	repl = 0
+	# hand = 0
+	temp = 0
+	res = 0
+	
+	new_hand = handToDice(hand)
+	# print(new_hand)
+	if(new_hand[0]==10):
+		repl = dice % 10
+		dice = dice//10
+		if(repl > new_hand[2]):
+			hand =  repl*100 + new_hand[1]*10 + new_hand[1]
+			
+		else:
+			hand =  new_hand[1]*100 + new_hand[1]*10 + repl
+		return (hand, dice)
+	else:
+		a = 0
+		count=0
+		main_dice = dice
+		while(dice>0):
+			a = dice%10
+			dice=dice//10
+			count+=1
+		# print(count)
+		if(count == 2):
+			dice = main_dice
+			repl = main_dice
+		else:
+			repl = main_dice % 100
+			dice= main_dice//100
+		# print(dice)
+		# print(repl)
+		# print(new_hand)
+		if(repl % 10 > new_hand[2]):
+			if(repl//10 > new_hand[2]):
+				hand= (repl%10)*100 + (repl//10)*10 + new_hand[2]
+			else:
+				hand =(repl%10)*100 + new_hand[2]*10 + (repl//10)
+		elif(repl//10 > new_hand[2]):
+			if(repl%10 > new_hand[2]):
+				hand= (repl//10)*100 + (repl%10)*10 + new_hand[2]
+			else:
+				hand =  (repl//10)*100 + new_hand[2]*10 + (repl%10)
+		else:
+			if(repl // 10)> repl %10:
+				hand =  (new_hand[2]*100 + (repl//10)*10 + repl%10)
+			else:
+				hand = (new_hand[2]*100 + (repl%10)*10 + repl//10)
+	
+		return (hand, dice)
+		
+		# res = rep*100 + temp
+
 	# your code goes here
-	pass
+	# pass
+# print(playstep2(413,2345))
