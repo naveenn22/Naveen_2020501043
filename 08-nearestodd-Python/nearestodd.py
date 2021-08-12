@@ -6,6 +6,25 @@
 
 
 def fun_nearestodd(n):
-	return 0
+	n = int(n * 10)
+	round_digit = int(n % 10)
+	k = n // 10
+	# print(n)
+	# print(k)
+	if(round_digit>=5):
+		
+		if(k%2 == 0):
+			return int(k+1)
+		else:
+			return int(k)
+	else:
+		if(k%2 == 0):
+			return int(k-1)
+		else:
+			return int(k)
+		 
 
 
+	# return round_digit
+
+# print(fun_nearestodd(12.0))
