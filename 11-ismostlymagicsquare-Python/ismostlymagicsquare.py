@@ -12,7 +12,34 @@
 # [ [ 1, 2],
 #   [ 2, 1]]
 # Each row and each column add to 3, but one diagonal adds to 2 and the other to 4.
+def dia(a):
+	j=0
+	d=0
+	for i in range(len(a)-1,-1,-1):
+		d+=a[i][j]
+		j=j+1
+	return d
 
 def ismostlymagicsquare(a):
 	# Your code goes here
-	pass
+	# pass
+	res=sum(a[0])
+	ds=0
+	# row check
+	for i in range(len(a)):
+		ds+=a[i][i]
+		rs=sum(a[0])
+		if(rs!=res):
+			return False
+	if(res!=ds):
+		return False
+	# coloums check
+	for i in range(len(a)):
+		cs=0
+		for j in range(len(a)):
+			cs=cs+a[j][i]
+		if(cs!=res):
+			return False
+	if(res!=dia(a)):
+		return False
+	return True
