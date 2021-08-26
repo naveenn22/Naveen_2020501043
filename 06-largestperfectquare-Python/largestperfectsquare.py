@@ -7,6 +7,16 @@
 # Hint: you may wish to use a similar approach to how you solved isPerfectSquare on the hw.
 # Another hint: This can be written using just one or two lines of Python.
 
+import math
+def isPerfectSquare(n):
+	m=int(math.sqrt(n))
+	if(m**2 == n):
+		return True
+	return False
 def largestperfectsquare(n):
 	# your code goes here
-	pass
+	for i in range(n,0,-1):
+		# if(isPerfectSquare(i)):
+		# 	return i
+		if(math.isqrt(i)**2==i):
+			return i
