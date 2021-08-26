@@ -11,7 +11,20 @@
 
 
 def fun_applycaesarcipher(msg, shift):
-	return ""
+	# return ""
+	res=""
+	for i in msg:
+		if(i.isalpha()==False):
+			res+=i
+			continue
+		a=ord(i)
+		if((a+shift<91 and a+shift>64) or (a+shift<123 and a+shift>96)):
+			res+=chr(a+shift)
+		else:
+			res+=chr()
+	return res
+
+print(fun_applycaesarcipher("z", -2))
 
 
 
