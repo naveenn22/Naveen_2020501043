@@ -12,16 +12,19 @@ q.enqueue(3)
 @pytest.mark.parametrize("result",[(1)])
 def test_peek1(result):    
     assert q.peek() == result
+    # print("passed")
     
 
 @pytest.mark.parametrize("result",[(1)])
 def test_dequeue2(result):    
     assert q.dequeue() == result
     q.enqueue(4)
+    # print("passed")
 
 @pytest.mark.parametrize("result",[(2),(3),(4)])
 def test_dequeue1(result):    
     assert q.dequeue() == result
+    # print("passed")
 
 
 
@@ -29,4 +32,5 @@ def test_dequeue1(result):
 def test_peek2(result): 
     q.enqueue(5)   
     assert q.peek() == result
+    # print("passed")
 
